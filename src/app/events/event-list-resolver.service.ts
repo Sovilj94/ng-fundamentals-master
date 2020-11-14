@@ -10,7 +10,7 @@ export class EventListResolver implements Resolve<any>{
 
     }
 
-    resolve (){
+    resolve(){
         return this.eventService.getEvents().pipe(map(events => events));
     }
 

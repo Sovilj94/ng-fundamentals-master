@@ -14,6 +14,9 @@ import { CreateEventComponent } from './events/create-event.component';
 import { Error404Component } from './errors/404.component';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListResolver } from './events/event-list-resolver.service';
+import { ProfileComponent } from './user/profile.component';
+import { LoginComponent } from './user/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,10 +26,13 @@ import { EventListResolver } from './events/event-list-resolver.service';
     EventDetailsComponent,
     NavBarComponenet,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
+    ProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

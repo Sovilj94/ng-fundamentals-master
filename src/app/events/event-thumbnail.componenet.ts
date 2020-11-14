@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from  '@angular/core'
+import { IEvent } from './shared/event.model'
 
 @Component ({
     selector:'event-thumbnail',
@@ -17,7 +18,7 @@ import {Component, EventEmitter, Input, Output} from  '@angular/core'
             <span>Location: {{event?.location?.address}}</span>
             <span class="pad-left">{{event?.location?.city}}, {{event?.location?.country}}</span>
         </div>
-        <div *ngIf="event?.orgUrl"> Online URL : {{event?.orgUrl}}</div>
+        <div *ngIf="event?.onlineUrl"> Online URL : {{event?.orgUrl}}</div>
     </div>
     `,
     styles:[`
@@ -28,7 +29,7 @@ import {Component, EventEmitter, Input, Output} from  '@angular/core'
     `]
 })
 export class EventThumbnailComponent {
-    @Input() event:any
+    @Input() event: IEvent
 
 
     getStartTimeStyle(): any{
