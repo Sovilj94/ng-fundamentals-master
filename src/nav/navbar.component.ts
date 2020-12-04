@@ -1,5 +1,6 @@
 import { templateJitUrl } from '@angular/compiler';
 import { Component } from "@angular/core";
+import { AuthService } from 'src/app/user/auth.service';
 
 
 
@@ -16,5 +17,14 @@ import { Component } from "@angular/core";
 })
 
 export class NavBarComponenet{
+
+
+    /**
+     *
+     */
+    constructor(public authService: AuthService) {
+
+        
+    }
 
 }

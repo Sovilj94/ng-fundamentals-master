@@ -16,7 +16,8 @@ import { EventRouteActivator } from './events/event-details/event-route-activato
 import { EventListResolver } from './events/event-list-resolver.service';
 import { ProfileComponent } from './user/profile.component';
 import { LoginComponent } from './user/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './user/auth.service';
 
 @NgModule({
   declarations: [
@@ -33,13 +34,15 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule
   ],
   providers: [
      EventService,
      ToastrService,
      EventRouteActivator,
      EventListResolver,
+     AuthService,
      {
        provide: 'canDeactivateCreateEvent',
        useValue: checkDirtyState
