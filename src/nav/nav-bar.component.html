@@ -25,7 +25,8 @@
         <div class="navbar-header navbar-right">
           <ul class="nav navbar-nav">
             <li>
-              <a [routerLink]="['/profile']"> Welcome John</a>
+              <a *ngIf="!authService.isAuthenticated()" [routerLink]="['/login']">Login</a>
+              <a *ngIf="authService.isAuthenticated()" [routerLink]="['/profile']"> Welcome {{authService.currentUser.firstName}}</a>
             </li>
           </ul>
         </div>
