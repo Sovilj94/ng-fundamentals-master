@@ -7,6 +7,7 @@ import { EventRouteActivator } from './events/event-details/event-route-activato
 import { EventListResolver } from './events/event-list-resolver.service';
 import { ProfileComponent } from './user/profile.component';
 import { LoginComponent } from './user/login.component';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
 
 
 export const appRoutes: Routes = [
@@ -16,5 +17,6 @@ export const appRoutes: Routes = [
     { path: '404', component: Error404Component},
     { path: '', redirectTo: '/events', pathMatch: 'full'},
     { path: 'profile', component: ProfileComponent },
-    { path: 'login', component: LoginComponent}
+    { path: 'login', component: LoginComponent},
+    { path: 'event/session/new', component: CreateSessionComponent}
 ]

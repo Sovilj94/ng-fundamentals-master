@@ -18,6 +18,7 @@ import { ProfileComponent } from './user/profile.component';
 import { LoginComponent } from './user/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './user/auth.service';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthService } from './user/auth.service';
     CreateEventComponent,
     Error404Component,
     ProfileComponent,
-    LoginComponent
+    LoginComponent,
+    CreateSessionComponent,
   ],
   imports: [
     BrowserModule,
