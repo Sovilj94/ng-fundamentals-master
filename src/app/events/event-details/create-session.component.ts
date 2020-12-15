@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { isUndefined } from "util";
 import { ISession } from '../shared/event.model';
 import { restrictedWords } from '../shared/restricted-words.validator';
 
@@ -28,9 +29,9 @@ export class CreateSessionComponent{
         ngOnInit(){
 
             this.name = new FormControl('',Validators.required);
-            this.presenter = new FormControl('',Validators.required);  
-            this.duration = new FormControl('',Validators.required);
-            this.level = new FormControl('',Validators.required);
+            this.presenter = new FormControl('',[Validators.required,,this.restrictedDuration]);  
+            this.duration = new FormControl('', Validators.required);
+            this.level = new FormControl('', Validators.required);
             this.abstract = new FormControl('',[Validators.required, Validators.maxLength(20),restrictedWords(['foo','bar'])]);
 
             this.newSessionForm= new FormGroup({
@@ -42,6 +43,22 @@ export class CreateSessionComponent{
             });
 
         }
+
+
+    restrictedDuration(control: FormControl): {[key: string]: any}{
+
+        var date = new Date(control.value);
+        if(date === undefined || date === null) return null
+
+        var dayOfWeek = date.getDay();
+        
+        if(dayOfWeek === 6){
+            return {'restrictedDuration':'Saturday'}
+        }else if (dayOfWeek === 0){
+            return{'restrictedDuration':'Sunday'}
+        }
+            return null;
+    }
 
     saveSession(formValues){
 
