@@ -12,7 +12,7 @@ import { IEvent } from './shared/event.model';
     <hr/>
         <div class="row">
             <div *ngFor="let event of events" class="col-md-5">
-            <event-thumbnail (click)="handleThumbnailClick(event.name)" #thumbnail [event] = "event"> </event-thumbnail>
+                <event-thumbnail (click)="handleThumbnailClick(event.name)" #thumbnail [event] = "event"> </event-thumbnail>
             </div>
         </div>
     </div>
@@ -25,8 +25,13 @@ export class EventListComponent implements OnInit{
 
     }
 
+    
+    
+
     ngOnInit(){
         this.events = this.route.snapshot.data['events'];
+        console.log(this.eventService.getEvents());
+        
     }
 
  

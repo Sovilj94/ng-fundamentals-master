@@ -17,7 +17,7 @@ import { restrictedWords } from '../shared/restricted-words.validator';
 `]
 })
 
-export class CreateSessionComponent{
+export class CreateSessionComponent {
     newSessionForm: FormGroup;
     name: FormControl;
     presenter: FormControl;
