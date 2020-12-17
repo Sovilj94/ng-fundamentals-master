@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { isUndefined } from "util";
 import { ISession } from '../shared/event.model';
 import { restrictedWords } from '../shared/restricted-words.validator';
 
 @Component({
+    selector: "create-session",
     templateUrl:"create-session.component.html",
     styles: [`
     em {float:right; color: #E05C65; padding-left: 10px }
@@ -23,6 +24,9 @@ export class CreateSessionComponent{
     duration: FormControl;
     level: FormControl;
     abstract: FormControl;
+
+    @Output() saveNewSession = new EventEmitter;
+    @Output() cancelAddSession = new EventEmitter;
 
     session: ISession;
 
@@ -71,9 +75,12 @@ export class CreateSessionComponent{
             abstract : formValues.abstract,
             voters: []
         }
-      console.log(this.session);
 
+        this.saveNewSession.emit(this.session);
+    }
 
+    cancel(){
+        this.cancelAddSession.emit();
     }
     
 }
