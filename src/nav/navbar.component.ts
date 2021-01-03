@@ -1,6 +1,10 @@
 import { templateJitUrl } from '@angular/compiler';
 import { Component } from "@angular/core";
+import { ISession } from 'src/app/events/shared/event.model';
+import { EventService } from 'src/app/events/shared/event.service';
 import { AuthService } from 'src/app/user/auth.service';
+import { EventEmitter } from '@angular/core';
+import { Observable} from 'rxjs';
 
 
 
@@ -18,11 +22,18 @@ import { AuthService } from 'src/app/user/auth.service';
 
 export class NavBarComponenet{
 
-    /**
-     *
-     */
-    constructor(public authService: AuthService) {
+    searchTerm : string="";
+    foundSessions : ISession [];
+
+
+    constructor(public authService: AuthService, private eventService: EventService) {
         
  
+    }
+
+    search(searchTerm){
+      //  this.eventService.searchSessions(searchTerm)
+        //    .subscribe(session => this.foundSessions = session);
+       
     }
 }

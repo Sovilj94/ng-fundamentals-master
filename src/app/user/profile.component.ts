@@ -1,7 +1,8 @@
 import { style } from "@angular/animations";
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators   } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Toastr, TOASTR_TOKEN } from "../common/toastr.service";
 import { AuthService } from './auth.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class ProfileComponent {
    lastName: FormControl;
 
 
-  constructor(private authService: AuthService, private router : Router) {
+  constructor(private authService: AuthService, private router : Router, @Inject(TOASTR_TOKEN) private toastr: Toastr) {
 
     
   }
@@ -48,7 +49,7 @@ export class ProfileComponent {
 
     if(this.profileForm.valid){
         this.authService.updateCurrentUser(formValues.firstName,formValues.lastName);
-        this.router.navigate(['events']);
+        this.toastr.success('Profile is Save');
     }
   }
 

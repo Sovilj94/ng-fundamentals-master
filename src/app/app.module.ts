@@ -6,7 +6,7 @@ import { EventListComponent } from './events/events-list.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.componenet';
 import { NavBarComponenet } from 'src/nav/navbar.component';
 import { EventService } from './events/shared/event.service';
-import { ToastrService } from './common/toastr.service';
+import { Toastr, TOASTR_TOKEN } from './common/toastr.service';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
@@ -22,6 +22,13 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
 import { SessionListComponent } from './events/event-details/session-list.component';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { DurationPipe } from './events/shared/duration.pipe';
+import { SimpleModalComponent } from './common/simpleModal.component';
+import { JQ_TOKEN } from './common/jQuery.service';
+
+
+let toastr: Toastr = window['toastr'];
+let jQuery = window['$'];
+
 
 @NgModule({
   declarations: [
@@ -38,6 +45,7 @@ import { DurationPipe } from './events/shared/duration.pipe';
     SessionListComponent,
     CollapsibleWellComponent,
     DurationPipe,
+    SimpleModalComponent,
     
   ],
   imports: [
@@ -48,7 +56,8 @@ import { DurationPipe } from './events/shared/duration.pipe';
   ],
   providers: [
      EventService,
-     ToastrService,
+     {provide: TOASTR_TOKEN, useValue: toastr},
+     {provide: JQ_TOKEN, useValue: jQuery},
      EventRouteActivator,
      EventListResolver,
      AuthService,
