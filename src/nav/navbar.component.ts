@@ -31,9 +31,13 @@ export class NavBarComponenet{
  
     }
 
-    search(searchTerm){
-      //  this.eventService.searchSessions(searchTerm)
-        //    .subscribe(session => this.foundSessions = session);
-       
+    searchSessions(searchTerm){
+ 
+      this.eventService.searchSessions(searchTerm).subscribe(sessions => {
+            this.foundSessions = sessions;
+            console.log(this.foundSessions);
+        });
+
+        
     }
 }

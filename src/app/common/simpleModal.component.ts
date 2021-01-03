@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
+import { JQ_TOKEN } from './jQuery.service';
 
 @Component({
     selector: 'simple-modal',
@@ -8,8 +9,18 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class SimpleModalComponent implements OnInit {
     @Input() title: string;
+    @Input() elementId: string;
+    @Input() coloseOnClick: boolean;
+    @ViewChild('modalcontainer') el: ElementRef;
     
-    constructor() { }
+    constructor(@Inject(JQ_TOKEN) private $ : any) { }
 
     ngOnInit() { }
+
+    closeModal(){
+            if(this.coloseOnClick === true)
+            {
+                this.$(this.el.nativeElement).modal('hide');
+            }
+    }
 }
