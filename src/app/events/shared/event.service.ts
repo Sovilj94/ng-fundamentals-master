@@ -4,7 +4,7 @@ import { IEvent, ISession } from './event.model';
 
 
 @Injectable()
-export class EventService{
+export class EventService {
 
     getEvents(): Observable<IEvent[]> {
       

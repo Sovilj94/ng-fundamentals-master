@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { EventsAppComponent } from './events-app.component';
 import { EventListComponent } from './events/events-list.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.componenet';
@@ -27,6 +26,7 @@ import { JQ_TOKEN } from './common/jQuery.service';
 import { ModalTriggerDirective } from './common/modalTrigger.directive';
 import { UpvoteComponent } from './events/event-details/upvote.component';
 import { VoterService } from './events/event-details/voter.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 let toastr: Toastr = window['toastr'];
@@ -56,7 +56,8 @@ let jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
   ],
   providers: [
      EventService,
